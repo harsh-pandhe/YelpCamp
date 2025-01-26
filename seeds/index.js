@@ -28,7 +28,7 @@ const seedDB = async () => {
 
         for (let i = 0; i < 50; i++) {
             const randomIndex = Math.floor(Math.random() * cities.length);
-
+            const price = Math.floor(Math.random() * 20) + 10;
             if (!cities[randomIndex]) {
                 console.error(`Invalid city at index ${randomIndex}, skipping...`);
                 continue;
@@ -37,6 +37,9 @@ const seedDB = async () => {
             const camp = new Campground({
                 location: `${cities[randomIndex].city}, ${cities[randomIndex].state}`,
                 title: `${sample(descriptors)} ${sample(places)}`,
+                image: `https://picsum.photos/400?random=${Math.random()}`,
+                description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, quidem. ",
+                price
             });
 
             await camp.save();
